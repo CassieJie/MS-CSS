@@ -1,0 +1,159 @@
+<%- include ../public/header.ejs%>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"/>
+<!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">-->
+<link  href="css/basic.css">
+<link rel="shortcut icon" href="images/mslogo.jpg">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+<!--<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<style>
+    .showless{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+       width:300px;
+        height: 32px;
+    }
+    .panel-default > .panel-heading {
+        color: white;
+        background-color: #428bca;
+        border-color: #ddd;
+        opacity: 0.7;
+    }
+
+
+</style>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2">
+
+            <%- include ../public/aslideleft.ejs%>
+
+        </div>
+        <div class="col-sm-10">
+            <ol class="breadcrumb">
+                <li class="active">CSS
+                </li>
+                <li class="active">List of CSS HERO
+                </li>
+            </ol>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <b>Search Bar</b>
+                </div>
+                <div class="panel-body">
+                   <!-- <form role="form" class="form-inline"> -->
+                    <form role="form" class="form-inline" action="/admin/product/search" method="post" >
+                        <div class="form-group date box01" >
+                            <label for="name">Please choose date </label>
+                                <input type="text" name="Date" id="Date" class="form-control" autocomplete="off" placeholder="Date YYYY/MM " >
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" style="background: rgba(66,139,202,0.7);color: white" class="btn btn-default">Search</button>
+                        </div>
+                    </form>
+                    </br>
+                    <form role="form" class="form-inline">
+                        <div class="form-group " >
+                            <label for="name">Please choose Badge </label>
+                            <label><input name="Badge" type="radio" value="1" />Empathetic </label>
+                            <label><input name="Badge" type="radio" value="2" />High-quality </label>
+                            <label><input name="Badge" type="radio" value="3" />Efficient </label>
+                            <label><input name="Badge" type="radio" value="4" />Resourceful </label>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" id="submit2"style="background:rgba(66,139,202,0.7);color: white" class="btn btn-default">Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!--
+                列表展示
+            -->
+            <div class="table-responsive">
+                <table class="table table-striped ">
+                    <thead>
+                    <tr>
+                        <th>Number</th>
+                        <th>CaseID</th>
+                        <th>Engineer</th>
+                        <th>Date</th>
+                        <th>Customer Voice</th>
+                        <th  min-width="80%";>Badge</th>
+
+                        <th class="text-center">Option</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <%for(var i=0;i<list.length;i++){%>
+                        <tr>
+                            <td ><%=i+1%></td>
+                            <td><%=list[i]._id%></td>
+                            <td><%=list[i].Engineer%></td>
+                            <td><%=list[i].Date%></td>
+                            <td class="showless"><%=list[i].CustomerVoice%></td>
+                            <td> <%for(var j=0;j<list[i].Badge.length;j++){%>
+
+                                <img width="30px" src="../<%=list[i].Badge[j]%>" alt="">
+                                <%}%></td>
+                            <td class="text-center">
+                                <a href="/admin/product/edit?id=<%=list[i]._id%>" class="btn btn-success">Update</a>
+                                <a href="/admin/product/delete?id=<%=list[i]._id%>" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    <%}%>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+
+    let dateMonthConfig = {
+        // language: "zh-CN", //语言
+        todayHighlight: true, //是否今日高亮
+        format: 'yyyy/mm', //点击月份后显示在input中的格式
+        autoclose: true, //是否开启自动关闭
+        startView: 1, //开始视图层，为月视图层
+        maxViewMode:'years', //最大视图层，为年视图层
+        minViewMode:'months', //最小视图层，为月视图层
+        startDate:moment().subtract(360,'month').toDate(), //控制可选的最早月份，为前12个月（含当前月）
+        endDate:moment().toDate(), //控制可选的最晚月份，为当前月
+        clearBtn:true
+    };
+
+// 设置日历属性
+      $('#Date').datepicker(dateMonthConfig);
+      console.log("dayin--"+$('#Date').val())
+
+</script>
+<script>
+    //提交表单给后台
+    $('#submit2').click(function(){
+        var checkID = [];//定义一个空数组
+        obj = document.getElementById("Badge")
+        console.log(obj)
+        $("input[name='Badge']:checked").each(function(i){//把所有被选中的复选框的值存入数组
+            checkID[i] =$(this).val();
+        });
+        console.log("now show in submit2");
+        console.log("checkID");
+        var  para1 = JSON.stringify(checkID);
+        //用Ajax传递参数
+        var result = check();
+        console.log("result is"+result)
+        if (result == true){
+
+            $.post('/admin/product/BadgeSearch',{checkID:para1},function(json){
+
+            })
+        }
+    })
+</script>

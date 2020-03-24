@@ -1,0 +1,202 @@
+<!Doctype html>
+<%- include ../public/header.ejs%>
+<meta charset="utf-8">
+<title>CSS Customer Voice| Add Case </title>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"/>
+<!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">-->
+<link  href="../../../css/basic.css">
+<link rel="icon" href="../../../images/mslogo.jpg">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+<!--<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<style>
+    .panel-default > .panel-heading {
+        color: white;
+        background-color: #428bca;
+        border-color: #ddd;
+        opacity: 0.7;
+    }
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2">
+            <%- include ../public/aslideleft.ejs%>
+			
+          
+        </div>
+        <div class="col-sm-10">
+            <ol class="breadcrumb">
+                <li class="active">CaseManagement
+                </li>
+                <li class="active">CaseList
+                </li>
+            </ol>
+<!--  method1--file chosen        -->
+            <div class="panel panel-default">
+
+                <div class="panel-heading">
+                    <b>Add Case / Email upload</b>
+                </div>
+                <form id="form"  enctype="multipart/form-data" style="margin:20px" >
+                    <!--                <form action="/admin/product/uploadEmail" method="POST" enctype="multipart/form-data">-->
+                    <div style="padding-left:25px">
+                    <p><input type="file" name="thumbnail" style="margin:20px 0px;"></p>
+                    <!--                    <p><input type="file" name="uploadImg" onchange="check_type(this)"></p>-->
+                    <p><input type="button" value="submit" id="btn" class="btn btn-default" style="background: rgba(66,139,202,0.7);color: white"></p>
+                    </div>
+                </form>
+            </div>
+<!--  method2--form submit        -->
+            <br>
+            <div class="panel panel-default">
+              
+			    <div class="panel-heading">
+                 <b>Add Case / Form submit</b>
+                </div>
+                <form id="form1"  action="##" method="post">
+                            <ul>
+                                <li>CaseID: <input style="margin-left: 9px" type="text" name="CaseID" id="CaseID"/></li>
+<!--                                <span   style="color: red" class="iderror"></span>-->
+                                <li>  Engineer: <input type="text" name="Engineer" id="Engineer"/></li>
+                                <li>  Badge:
+                                <label style="margin-left: 18px"><input name="Badge" type="checkbox" value="1" />Empathetic </label>
+                                <label style="margin-left: 5px"><input name="Badge" type="checkbox" value="2" />High-quality </label>
+                                <label style="margin-left: 5px"><input name="Badge" type="checkbox" value="3" />Efficient </label>
+                                <label style="margin-left: 5px"><input name="Badge" type="checkbox" value="4" />Resourceful </label>
+                                <label style="margin-left: 5px"><input name="Badge" type="checkbox" value="5" />Communicate Effectively </label>
+                                </li>
+                                <li> Date:
+                                    <input style="display: inline-block;width: 200px;margin-left: 27px" type="text" name="Date" id="Date" value="2020/02" required class="form-control" autocomplete="off"  >
+                                </li>
+                                <li>
+                                    Voice:
+                                    <textarea style="margin-left: 22px" name="CustomerVoice" id="Voice" cols="40" rows="4"></textarea>
+                                </li>
+
+                                <li>
+                                    <br/>
+                                    <button type="button" onclick ="" class="btn btn-default" style="background: rgba(66,139,202,0.7);color: white" id="button1">Submit</button>
+                                </li>
+
+                            </ul>
+
+                                        </form>
+
+            </div>
+
+    </div>
+
+        </div>
+    </div>
+<script>
+    let dateMonthConfig = {
+        // language: "zh-CN", //语言
+        todayHighlight: true, //是否今日高亮
+        format: 'yyyy/mm', //点击月份后显示在input中的格式
+        autoclose: true, //是否开启自动关闭
+        startView: 1, //开始视图层，为月视图层
+        maxViewMode:'years', //最大视图层，为年视图层
+        minViewMode:'months', //最小视图层，为月视图层
+        startDate:moment().subtract(360,'month').toDate(), //控制可选的最早月份，为前12个月（含当前月）
+        endDate:moment().toDate(), //控制可选的最晚月份，为当前月
+        clearBtn:true
+    };
+
+    // 设置日历属性
+    $('#Date').datepicker(dateMonthConfig);
+    console.log("dayin--"+$('#Date').val())
+</script>
+<!--检测上传文件后缀-->
+<script>
+    $('#btn').click(function(){
+        // 利用formData将整个表单数据打包
+        var inpData = new FormData(document.getElementById('form'));
+        $.ajax({
+            url:'/admin/product/file',
+            type:'post',
+            contentType: false,
+            data:inpData,// 打成的数据包可以直接通过send发送
+            processData: false,
+            success:function(data){
+                // if(data.repeat == 'yes'){
+                //   alert("CaseID already exists!")
+                //  }
+                //  if (typeof data.redirect == 'string'){
+                //    window.location = data.redirect
+                //  }
+                //未完成
+
+            }
+
+        })
+        alert("upload successful!");
+    })
+    // function check_type(obj){
+    //     var str=$(obj).val();
+    //     var index=str.lastIndexOf('.');
+    //     var strtype=str.substr(index,4);
+    //     strtype=strtype.toLowerCase();
+    //     alert("strtype="+strtype);
+
+    // if(strtype!=".png" || strtype!=".jpg" || strtype!=".gif"){
+    //     $(obj).val("");
+    //     alert("请上传gif, jpg, png格式的图片！");
+    // }
+</script>
+<!--表单提交方法-->
+<script>
+    //表单验证
+    // function check(){
+    //     var caseID = $("#CaseID").val();
+    //     //判断纯数字输入
+    //     var isnum = /^\d{15}$/.test(caseID);
+    //     //判断非空、数字、长度
+    //     if( isnum==false){
+    //         alert("Please input a 15-digit caseid!");
+    //         return false;
+    //     }
+    //     return true;
+    // }
+
+    //提交表单给后台
+    $('#button1').click(function(){
+        var checkID = [];//定义一个空数组
+        obj = document.getElementById("Badge")
+
+        $("input[name='Badge']:checked").each(function(i){//把所有被选中的复选框的值存入数组
+            checkID[i] =$(this).val();
+        });
+
+        var  para1 = $('#CaseID').val();
+        var  para2 = $('#Engineer').val();
+        var  para3 = $('#Date').val();
+        var  para4 = JSON.stringify(checkID);
+        var  para5 = $('#Voice').val();
+
+        //用Ajax传递参数
+        var result = true;
+        console.log("result is"+result)
+        if (result == true) {
+
+            $.post('/admin/product/doAdd', {
+                CaseID: para1,
+                Engineer: para2,
+                Date: para3,
+                checkID: para4,
+                Voice: para5
+            }, function (data) {
+                if(data.repeat == 'yes'){
+                    alert("CaseID already exists!")
+                }
+                if (typeof data.redirect == 'string'){
+                    window.location = data.redirect
+                }
+            })
+        }
+    })
+    //     }
+
+</script>
+</body>
+</html>

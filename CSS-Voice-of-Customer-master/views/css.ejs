@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>CSS Customer Voice | Honor Wall </title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/lightbox.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/component.css" />
+    <link rel="shortcut icon" href="images/mslogo.jpg">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <!--    pop-up css style-->
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/default.css" />
+    <link rel="stylesheet" type="text/css" href="css/component.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"/>
+    <link  href="css/basic.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+    .hide_p{
+        /*width: 220px;*/
+        height: 44px;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        color: #0f0f0f;
+    }
+    .box_shadow{
+        /*box-shadow:0 0 .25rem rgba(95, 95, 95, .48) inset;*/
+        box-shadow:15px 0 15px -15px #000,
+        -15px 0 15px -15px #000;
+    }
+    .shadow1{
+        /*box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 0, 0, 0.1) ;*/
+        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 0, 0, 0.1) inset;
+        position:relative;
+
+    }
+    .shadow1:before{
+        position:absolute;
+        content:"";
+        width:80%;
+        top:140px;bottom:15px;left:30px;
+        /*background-color:#0099AE;*/
+        z-index:-1;
+        -webkit-box-shadow:0 23px 17px 0 #808080;
+        -moz-box-shadow:0 23px 17px 0 #808080;
+        box-shadow: -25px 10px 15px 0 #0099AE;
+        -webkit-transform:rotate(-4deg);
+        -moz-transform:rotate(-4deg);
+        transform:rotate(-4deg);
+    }
+.box{
+    background-color: white;
+}
+    .col-lg-3{
+        width: 23%;
+        margin: 10px 1% 20px 1%;
+    }
+    .myphoto{
+        margin-top: 15px;
+
+    }
+    .more{
+        position: relative;
+    }
+    .load_more{
+           display: block;
+           height: 34px;
+           line-height: 34px;
+           text-align: center;
+           font-size: 14px;
+           background: #f7f7f7;
+
+       }
+    .md-title{
+        background-color: #D5D5D5;
+    }
+    div >h3.pop-h3{
+        text-align: left;
+        font-size: 27px;
+        color: black;
+        float:left;
+        font-weight: bold;
+        padding: 5px 150px 0px 0px;
+        }
+    h3.pop2-h3{
+        text-align: left;
+        /*font-size: 27px;*/
+        color: white;
+        float:left;
+        background-color: green;
+        width:70%;
+        height:60px;
+        margin:20px 30px 20px 10px;
+        border-radius: 10px;
+        font-size: 20px;
+        padding: 20px 10px;
+    }
+        div >img.pop-img{
+            width:100px;
+            float: left;
+            alignment: center;
+            margin: 0px 0px 0px 10px;
+
+        }
+    img.pop2-img{
+        width:70px;
+        /*margin-left: 50px;*/
+        float: right;
+        alignment: center;
+        margin: 0px 40px 0px 0px;
+
+    }
+     .content-right{
+        padding: 20px 0px 10px 10px;
+        float: right;
+        /*width: 240px;*/
+         width:40%;
+     }
+        .content-left{
+            float: left;
+            position:relative;
+            /*width: 500px;*/
+            width: 60%;
+        }
+        div.content-left>ul{
+            padding: 30px 20px 0px 40px;
+            margin: 20px 0px;
+        }
+    .voice-border{
+        /*width: 468px;*/
+        width: 100%;
+        padding: 9px;
+        border: 1px solid #e3e3e3;
+        border-top-color: rgb(227, 227, 227);
+        border-top-style: solid;
+        border-top-width: 1px;
+        border-right-color: #ececec;
+        border-right-style: solid;
+        border-right-width: 1px;
+        border-bottom-color: #e0e0e0;
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-left-color: rgb(227, 227, 227);
+        border-left-style: solid;
+        -webkit-box-shadow: 1px 2px 1px rgba(0,0,0,.072);
+    }
+        .pop-font{
+            font-size:20px;
+            font-family:'Segoe UI Semibold';
+            font-weight: 300;
+        }
+        div.defloat:after{
+            clear: both;
+            content: " ";
+            display: block;
+        }
+
+</style>
+</head><!--/head-->
+
+<body>
+<header id="header">
+
+    <div class="navbar navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">
+                    <h1><img style="width: 108px;height:23px ;" src="images/logo.png" alt="logo"></h1>
+                </a>
+
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+<!--                    <li><a href="">Home</a></li>-->
+
+
+                </ul>
+            </div>
+<!--            <div class="search">-->
+<!--                <form role="form">-->
+<!--                    <i class="fa fa-search"></i>-->
+<!--                    <div class="field-toggle">-->
+<!--                        <input type="text" class="search-form" autocomplete="off" placeholder="Search">-->
+<!--                    </div>-->
+<!--                </form>-->
+<!--            </div>-->
+        </div>
+    </div>
+</header>
+<!--/#header-->
+
+
+<section id="page-breadcrumb">
+    <div class="vertical-center sun">
+        <div class="container">
+            <div class="row">
+                <div class="action">
+                    <div class="col-sm-12">
+                        <h1 class="title">CSS <strong>Customer Hero</strong> Honor Wall</h1>
+                        <!--                            <p>CSS <strong>Customer Hero</strong> Honor Wall</p>-->
+                    </div>
+                </div>
+            </div>
+            <form role="form" class="form-inline" style="float: right" action="/search" method="post" >
+                <div class="form-group date box01" >
+                    <label for="name" style="color: #000000">Please choose date </label>
+                    <input type="text" name="Date" id="Date" class="form-control" autocomplete="off" placeholder="Date YYYY/MM " >
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<!--/#action-->
+
+<section id="blog" class="padding-top padding-bottom">
+    <div class="container" >
+        <div class="row">
+            <div class="masonery_area">
+                <%for(var i=0;i<list.length;i++){%>
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 box shadow1 ">
+                    <div class="single-blog two-column">
+                        <div class="post-thumb myphoto">
+                            <%for(var j=0;j<list[i].Badge.length;j++){%>
+                            <img src="<%=list[i].Badge[j]%>" id="origin-img">
+                            <%}%>
+<!--                            <audio src="audio/juicy.mp3" preload="auto"></audio>-->
+                        </div>
+                        <div class="post-content overflow">
+                            <ul class="nav nav-justified post-nav">
+                                <li><a href="#"><i class="fa fa-tag"></i>Help Me</a></li>
+                                <li><a href="#"><i class="fa fa-clock-o"></i><%= list[i].Date%></a></li>
+                            </ul>
+                            <h2 class="post-title bold" style="font-size: 20px"><a href="blogdetails.html"><%=list[i]._id%></a></h2>
+                            <h3 class="post-author"><a href="#"><%=list[i].Engineer%></a></h3>
+                            <p class="hide_p"><%=list[i].CustomerVoice%></p>
+<!--                            <a  class="read-more">View More</a>-->
+                            <input style="color: #0099AE;font-weight: 300;" type="button" name="Button" id="<%=i%>" value="View More" onclick="find()">
+<!--                            <div class="post-bottom overflow">-->
+<!--                                <ul class="nav nav-justified post-nav">-->
+<!--                                    <li><a href="#"><i class="fa fa-heart"></i>32 Love</a></li>-->
+<!--                                    <li><a href="#"><i class="fa fa-comments"></i>3 Comments</a></li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+                        </div>
+                    </div>
+                </div>
+                    <%}%>
+            </div>
+        </div>
+        <div class="row list">Loading data, please wait ...</div>
+        <div style="text-align: center" class="fuqin">
+            <a href="javascript:;" style="width: 538px;display: inline-block" class="load_more" onClick="jq22.loadMore();"><b>Load More</b></a></div>
+    </div>
+</section>
+<!--pop-up-->
+<div class="zhezhao " id="zhezhao">
+    <div class="tankuang">
+        <div class="defloat">
+            <button style="float:right;" class="md-close" onclick="hidder()" type="button" role="menuitem" title="Close" aria-label="Close" data-is-focusable="true" tabindex="-1">
+                <span >
+                    <i class="fa fa-close "></i>
+<!--                    <i data-icon-name="Cancel" role="presentation" aria-hidden="true"  style="font-family: controlIcons;font-weight:bold;font-size: 24px;border-radius: 50%">×</i>-->
+                </span>
+            </button>
+        </div>
+        <div class="md-title">
+<!--            <button class="md-close" onclick="hidder()">Close me!</button>-->
+            <img class="pop-img" src="images/pop_logo.png" >
+            <h3 class="pop-h3">YOU are a Customer HERO! </h3>
+
+                <div style="clear: both"></div>
+        </div>
+        <div class="md-content">
+            <div class="content-body">
+            <div class="content-left">
+                <ul>
+                    <h2 class="pop-font" style="font-size: 15px;display: inline">To &nbsp;</h2>
+                    <li id="pop-eng" class="pop-font"  style="font-size: 18px;display: inline">default-eng</li>
+                    <div class="voice-border" style="margin-top: 10px">
+                    <p id="pop-id" class="pop-font">default-id</p>
+                    </div>
+                    <br>
+                    <h2 class="pop-font" style="font-size: 15px">Here's what your customer say about YOU!</h2>
+                    <div class="voice-border">
+                        <li id="pop-voice" class="pop-font" style="font-style: italic">default-voice</li>
+                    </div>
+
+                </ul>
+            </div>
+            <div class="content-right" id="pop-img"></div>
+                <div style="clear:both;"></div>
+            </div>
+
+            <div style="clear:both;"></div>
+        </div>
+        <div class="helpme" >
+            <h3 class="pop2-h3" ><strong>Help Me</strong> quickly when I need your expertise!</h3>
+            <img class="pop2-img" style="margin-right: 5px"  src="images/help.png">
+            <div style="clear:both;"></div>
+        </div>
+    </div>
+</div>
+<!--/#blog-->
+
+<footer style="background-color: #333;font-size: 12px;color: white;height: 90px" role="contentinfo">
+    <div >
+        <div class="copyright-text text-center">
+            <p >© Your Company 2020. All Rights Reserved.</p>
+            <p>Designed by CSS</p>
+
+            <img src="images/microsoft-logo.png" height="20" >
+            <!--                        <img class="microsoft-logo-inverted" src="images/microsoft-logo-inverted.png" height="20" alt="Microsoft homepage">-->
+        </div>
+        <!--                <span style="float: right;padding-right: 30px">© 2020| Microsoft</span>-->
+
+    </div>
+
+
+</footer>
+
+<!--/#footer-->
+
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/lightbox.min.js"></script>
+<script type="text/javascript" src="js/wow.min.js"></script>
+<script type="text/javascript" src="js/audio.min.js"></script>
+<script>
+    audiojs.events.ready(function() {
+        var as = audiojs.createAll();
+    });
+</script>
+<script type="text/javascript" src="js/masonry.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+
+<!--my code-->
+<!--Date picker script-->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+<script>
+
+    let dateMonthConfig = {
+        // language: "zh-CN", //语言
+        todayHighlight: true, //是否今日高亮
+        format: 'yyyy/mm', //点击月份后显示在input中的格式
+        autoclose: true, //是否开启自动关闭
+        startView: 1, //开始视图层，为月视图层
+        maxViewMode:'years', //最大视图层，为年视图层
+        minViewMode:'months', //最小视图层，为月视图层
+        startDate:moment().subtract(360,'month').toDate(), //控制可选的最早月份，为前12个月（含当前月）
+        endDate:moment().toDate(), //控制可选的最晚月份，为当前月
+        clearBtn:true
+    };
+
+    // 设置日历属性
+    $('#Date').datepicker(dateMonthConfig);
+    console.log("dayin--"+$('#Date').val())
+
+</script>
+<!--Readmore script-->
+<script>
+    var _content = []; //临时存储li循环内容
+    var jq22 = {
+        _default: 8, //默认显示图片个数
+        _loading: 4, //每次点击按钮后加载的个数
+        init: function() {
+            var lis = $("div.box");
+            $(".container div.list").html("");
+            for(var n = 0; n < jq22._default; n++) {
+                lis.eq(n).appendTo(".container div.list");
+            }
+            // $(".jq22 ul.list img").each(function() {
+            //     $(this).attr('src', $(this).attr('realSrc'));
+            // })
+            for(var i = jq22._default; i < lis.length; i++) {
+                _content.push(lis.eq(i));  //尾部添加
+            }
+            $(".container .masonery_area").html("");
+        },
+        loadMore: function() {
+            // var mLis = $(".jq22 ul.list li").length;
+            for(var i = 0; i < jq22._loading; i++) {
+                var target = _content.shift();   //首部删除
+                if(!target) {   //target为空
+                    $('.container div.fuqin').html("<p>All data is loaded ...</p>");
+                    break;
+                }
+                $(".container div.list").append(target);
+
+            }
+            //固定每个coldiv的高度,防止错位
+            var arr = new Array();
+            $('div .col-lg-3').each(function(i){
+                arr[i] = $(this).outerHeight();
+            });
+
+            if($(window).width() >= 1024){  //只有大于1024px才需要
+                $('div .col-lg-3').height(Math.max.apply(null,arr));
+            }
+        }
+    }
+    jq22.init();
+</script>
+<!--pop-up script-->
+<script type="text/javascript">
+    document.getElementById('zhezhao').style.display="none";
+    function find() {
+        console.log("load---find()")
+        var a = document.getElementsByName("Button");
+        var k;
+        for (var i=0; i<a.length; i++) {
+            var x = document.activeElement
+            if (a[i] == x) {
+                k = i + 1;
+                var _id = $("#"+i).siblings('h2')[0].innerText;
+                var eng = $("#"+i).siblings('h3')[0].innerText;
+                var voice =$("#"+i).siblings('p')[0].innerText;
+
+                $.post('/pop_up_search',{id:_id},function(data){
+                    console.log("see here data is--"+data)
+                    var shtml ="";
+                    for(var j=0;j<data.length;j++){
+                        shtml += '<img src="'+data[j]+'" alt="" width="100px">';
+                    }
+                    $("#pop-img").html(shtml);
+
+                })
+                // var img_src = $("#"+i).parents(".post-thumb　myphoto").find('img').attr('src');
+                // console.log(img_src);
+                console.log("id is"+_id);
+                $("#pop-id").text(_id);
+                $("#pop-eng").text(eng);
+                $("#pop-voice").text('"'+voice+'"');
+
+                document.getElementById('zhezhao').style.display = "";
+            }
+        }
+    }
+
+    function hidder() {
+        document.getElementById('zhezhao').style.display = "none";
+    }
+
+</script>
+<script>
+    window.onload = function(){
+        var arr = new Array();
+        $('div .col-lg-3').each(function(i){
+            arr[i] = $(this).outerHeight();
+        });
+
+        if($(window).width() >= 1024){  //只有大于1024px才需要
+            $('div .col-lg-3').height(Math.max.apply(null,arr));
+        }
+    }
+</script>
+</body>
+</html>

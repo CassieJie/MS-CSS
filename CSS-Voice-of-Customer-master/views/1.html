@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>原生点击按钮加载更多(懒加载，每次加载N个)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        body {
+            background: #333;
+            font-size: 14px;
+            font-family: "微软雅黑"
+        }
+
+        a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .jq22 {
+            width: 800px;
+            height: auto;
+            margin: 0 auto;
+            overflow: hidden;
+            text-align: left;
+            background: #fff;
+            padding: 5px;
+        }
+
+        .jq22 ul.list {
+            overflow: hidden;
+        }
+
+        .jq22 ul.list li {
+            width: 150px;
+            height: 150px;
+            margin: 5px;
+            float: left;
+            overflow: hidden;
+        }
+
+        .jq22 ul.list li img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .jq22 ul.list p {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .jq22 .more {
+            overflow: hidden;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .jq22 .more a {
+            display: block;
+            width: 80px;
+            padding: 8px 0;
+            color: #fff;
+            margin: 0 auto;
+            background: #333;
+            text-align: center;
+            border-radius: 3px;
+        }
+
+        .jq22 .more a:hover {
+            text-decoration: none;
+            background: red;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<!--代码部分begin-->
+<div class="jq22">
+    <div class="hidden">
+        <li><img src="../public/images/logo.png"  width="150" height="150" /></li>
+        <li><img src="../public/images/logo.png"   width="150" height="150" /></li>
+        <li><img src="../public/images/logo.png"   width="150" height="150" /></li>
+        <li><img src="../public/images/logo.png"   width="150" height="150" /></li>
+        <li><img src="../public/images/logo.png"   width="150" height="150" /></li>
+        <li><img src="../public/images/logo.png" realSrc="images/500x500-2.png" width="150" height="150" /></li>
+        <li><img src="../public/images/logo.png" realSrc="images/500x500-2.png" width="150" height="150" /></li>
+        <li><img src="../public/images/logo.png" realSrc="images/500x500-2.png" width="150" height="150" /></li>
+        <li><img src="../public/images/logo.png" realSrc="images/500x500-2.png" width="150" height="150" /></li>
+        <li><img src="../public/images/logo.png" realSrc="images/500x500-2.png" width="150" height="150" /></li>
+        <li><img src="../public/images/logo.png" realSrc="images/500x500-3.png" width="150" height="150" /></li>
+        <li><img src="../public/images/logo.png" realSrc="images/500x500-3.png" width="150" height="150" /></li>
+        <li><img src="../public/images/logo.png" realSrc="images/500x500-3.png" width="150" height="150" /></li>
+        <li><img src="../public/images/logo.png" realSrc="images/500x500-3.png" width="150" height="150" /></li>
+        <li><img src="../public/images/logo.png" realSrc="images/500x500-3.png" width="150" height="150" /></li>
+        <li><img src="../public/images/logo.png" realSrc="images/500x500-4.png" width="150" height="150" /></li>
+        <li><img src="../public/images/logo.png" realSrc="images/500x500-4.png" width="150" height="150" /></li>
+        <li><img src="../public/images/logo.png" realSrc="images/500x500-4.png" width="150" height="150" /></li>
+        <li><img src="../public/images/logo.png" realSrc="images/500x500-4.png" width="150" height="150" /></li>
+        <li><img src="../public/images/logo.png" realSrc="images/500x500-4.png" width="150" height="150" /></li>
+        <li><img src="../public/images/logo.png" realSrc="images/500x500-5.png" width="150" height="150" /></li>
+        <li><img src="../public/images/logo.png" realSrc="images/500x500-5.png" width="150" height="150" /></li>
+        <li><img src="../public/images/logo.png" realSrc="images/500x500-5.png" width="150" height="150" /></li>
+        <li><img src="../public/images/logo.png" realSrc="images/500x500-5.png" width="150" height="150" /></li>
+        <li><img src="../public/images/logo.png" realSrc="images/500x500-5.png" width="150" height="150" /></li>
+    </div>
+    <ul class="list">数据加载中，请稍后...</ul>
+    <div class="more"><a href="javascript:;" onClick="jq22.loadMore();">加载更多</a></div>
+</div>
+<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script>
+    var _content = []; //临时存储li循环内容
+    var jq22 = {
+        _default: 10, //默认显示图片个数
+        _loading: 5, //每次点击按钮后加载的个数
+        init: function() {
+            var lis = $(".jq22 .hidden li");
+            $(".jq22 ul.list").html("");
+            for(var n = 0; n < jq22._default; n++) {
+                lis.eq(n).appendTo(".jq22 ul.list");
+            }
+            // $(".jq22 ul.list img").each(function() {
+            //     $(this).attr('src', $(this).attr('realSrc'));
+            // })
+            for(var i = jq22._default; i < lis.length; i++) {
+                _content.push(lis.eq(i));  //尾部添加
+            }
+            $(".jq22 .hidden").html("");
+        },
+        loadMore: function() {
+            var mLis = $(".jq22 ul.list li").length;
+            for(var i = 0; i < jq22._loading; i++) {
+                var target = _content.shift();   //首部删除
+                if(!target) {   //target为空
+                    $('.jq22 .more').html("<p>全部加载完毕...</p>");
+                    break;
+                }
+                $(".jq22 ul.list").append(target);
+                // $(".jq22 ul.list img").eq(mLis + i).each(function() {
+                //     $(this).attr('src', $(this).attr('realSrc'));
+                // });
+            }
+        }
+    }
+    jq22.init();
+</script>
+<!--代码部分end-->
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!Doctype html>
+<%- include ../public/header.ejs%>
+<meta charset="utf-8">
+<title>CSS Customer Voice| Add Case </title>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"/>
+<!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">-->
+<link  href="../../../css/basic.css">
+<link rel="icon" href="../../../images/mslogo.jpg">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+<!--<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<style>
+    .panel-default > .panel-heading {
+        color: white;
+        background-color: #428bca;
+        border-color: #ddd;
+        opacity: 0.7;
+    }
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2">
+            <%- include ../public/aslideleft.ejs%>
+			
+          
+        </div>
+        <div class="col-sm-10">
+            <ol class="breadcrumb">
+                <li class="active">CaseManagement
+                </li>
+                <li class="active">Add Engineer
+                </li>
+            </ol>
+
+            <div class="panel panel-default">
+              
+			    <div class="panel-heading">
+                 <b>Add Engineer</b>
+                </div>
+                <form id="form1"  action="/admin/product/doAddEngineer" method="post">
+<!--                      <form action="" method="">-->
+                            <ul>
+                                <li>Engineer: <input type="text" name="engineerName" id="engineerName"/></li>
+                                <li>Email: <input style="margin-left: 9px" type="text" name="engineerEmail" id="engineerEmail"/></li>
+<!--                                <span   style="color: red" class="iderror"></span>-->
+                                <li>
+                                    <br/>
+                                    <button type="submit" onclick ="" class="btn btn-default" style="background: rgba(66,139,202,0.7);color: white" id="btn">Submit</button>
+<!--                                    <button type="button" onclick ="" class="btn btn-default" style="background: rgba(66,139,202,0.7);color: white" id="btn">Submit</button>-->
+                                </li>
+
+                            </ul>
+
+                </form>
+
+            </div>
+
+    </div>
+
+        </div>
+    </div>
+
+<!--检测上传文件后缀-->
+<script>
+     $('#btn').click(function(){
+         alert("submit successful");
+     });
+    // $('#btn').click(function(){
+    // var name = $("#engineerName").val();
+    // var email = $("#engineerEmail").val();
+    // console.log("#engineerName is+"+name);
+    //     console.log("#engineerEmail is+"+email);
+    //     $.ajax({
+    //         url:'/admin/product/doAddEngineer',
+    //         type:'post',
+    //         contentType: "application/json",
+    //         data:{engineerName:name,engineerEmail:email},// 打成的数据包可以直接通过send发送
+    //         processData: false,
+    //         success:function(data){
+    //             // if(data.repeat == 'yes'){
+    //              alert("Add Engineer success!")
+    //             //  }
+    //             //  if (typeof data.redirect == 'string'){
+    //             //    window.location = data.redirect
+    //             //  }
+    //
+    //         }
+    //     })
+    // })
+
+</script>
+
+</body>
+</html>
