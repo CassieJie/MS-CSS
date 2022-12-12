@@ -13,7 +13,7 @@
     "body-parser": "^1.19.0",
     "ejs": "^2.6.1",
     "eml-format": "^0.6.1",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "formidable": "^1.2.2",
     "md5-node": "^1.0.1",
     "mongodb": "^3.2.4",
